@@ -1,0 +1,25 @@
+{
+  "name": "workflow",
+  "version": "1.0.0",
+  "description": "my web workflow with npm, sass, gulp and more",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erdemuslu/workflow.git"
+  },
+  "keywords": [
+    "sass",
+    "npm",
+    "git",
+    "gulp"
+  ],
+  "author": "Erdem Uslu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erdemuslu/workflow/issues"
+  },
+  "homepage": "https://github.com/erdemuslu/workflow#readme"
+}
