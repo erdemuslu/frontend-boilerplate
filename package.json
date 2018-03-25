@@ -35,5 +35,8 @@
     "merge-stream": "^1.0.1",
     "mustache": "^2.3.0",
     "popper.js": "^1.14.1"
+  },
+  "dependencies": {
+    "uglify-js": "^3.3.16"
   }
 }
