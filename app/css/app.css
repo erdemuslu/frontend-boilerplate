@@ -8972,22 +8972,47 @@ a.text-dark:hover, a.text-dark:focus {
     border: 1px solid #ddd !important;
   }
 }
+html, body {
+  font-family: 'Avenir', sans-serif;
+  background-color: #eef4d4;
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+
 h1 {
-  color: red;
-  -webkit-transition: color 1s ease;
-  transition: color 1s ease;
+  font-size: 48px;
+  font-weight: 500;
 }
 
-h1:hover {
-  -webkit-transition: color 1s ease;
-  transition: color 1s ease;
+.logos {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
-a {
-  -webkit-transition: color 1s ease;
-  transition: color 1s ease;
-}
-
-.erdem {
-  color: red;
+.logos img {
+  width: auto;
+  height: 160px;
+  margin-left: 32px;
+  margin-right: 32px;
 }

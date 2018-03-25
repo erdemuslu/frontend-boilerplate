@@ -8,21 +8,22 @@
     <script src="js/main.js"></script>    
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <h1>Hello from my workflow</h1>
+    <div class="wrap">
+        <h1>my web workflow with npm, sass, gulp and more</h1>
+        <div class="logos">
+            <img src="img/gulp-logo.svg" alt="">
+            <img src="img/browserify-logo.png" alt="">
+            <img src="img/sass-logo.png" alt="">
         </div>
-        <div class="row">
-            <div id="example" class="example">
-                
-            </div>
-            <script id="template" type="x-tmpl-mustache">
-                {{#example}}
-                    <h2>{{title}}</h2>
-                    <h3>{{explain}}</h3>
-                {{/example}}
-            </script>
+        <div id="example" class="example">
+            
         </div>
+        <script id="template" type="x-tmpl-mustache">
+            {{#example}}
+                <h2>{{title}}</h2>
+                <h3>{{explain}}</h3>
+            {{/example}}
+        </script>
     </div>
 </body>
 </html>
