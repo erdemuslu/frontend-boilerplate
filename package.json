@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/erdemuslu/workflow#readme",
   "devDependencies": {
-    "bootstrap": "^4.0.0",
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
@@ -36,7 +35,6 @@
     "gulp-sass": "^3.2.1",
     "jquery": "^3.3.1",
     "merge-stream": "^1.0.1",
-    "mustache": "^2.3.0",
     "popper.js": "^1.14.1"
   },
   "dependencies": {

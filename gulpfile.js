@@ -39,8 +39,13 @@ gulp.task('clean-script', function() {
 gulp.task('script', ['clean-script'], function() {
     return gulp.src(sourcePath.jsSource)
         .pipe(concat('main.js'))
-        .pipe(browserify())
+        .pipe(browserify())        
         .pipe(gulp.dest(appPath.js))
+});
+
+gulp.task('script-watch', ['script'], function (done) {
+    browserSync.reload();
+    done();
 });
 
 gulp.task('html', function() {
@@ -71,12 +76,7 @@ gulp.task('images', function() {
         .pipe(gulp.dest(appPath.img));
 });
 
-/* gulp.task('copy', ['clean-html'], function() {
-    return gulp.src(sourcePath.htmlSource)
-        .pipe(gulp.dest(appPath.root))
-}); */
-
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', function() {
     browserSync.init([appPath.css + '/*.css', appPath.root + '/*.html', appPath.js + '/*.js'], {
         server:{
             baseDir: appPath.root
@@ -84,10 +84,10 @@ gulp.task('serve', ['sass'], function() {
     })
 });
 
-gulp.task('watch', ['serve', 'sass', 'clean-html', 'script', 'clean-script', 'images', 'html'], function() {
+gulp.task('watch', ['serve', 'sass', 'clean-html', 'script', 'script-watch', 'clean-script', 'images', 'html'], function() {
     gulp.watch([sourcePath.sassSource], ['sass']);
-    //gulp.watch([sourcePath.htmlSource], ['copy']);
     gulp.watch([sourcePath.jsSource], ['script']);
+    gulp.watch(sourcePath.jsSource, ['script-watch']);
     gulp.watch([sourcePath.imgSource], ['images']);
     gulp.watch([sourcePath.htmlSource, sourcePath.htmlPartialsSource], ['html']);
 });
