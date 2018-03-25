@@ -3,12 +3,13 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload(),
     autoprefixer = require('gulp-autoprefixer'),
-    clean = require('gulp-clean');
+    clean = require('gulp-clean'),
+    concat = require('gulp-concat');
 
 var sourcePath = {
     sassSource: 'src/scss/*.scss',
     htmlSource: 'src/*.html',
-    jsSource: 'src/js/*.js'
+    jsSource: 'src/js/**'
 }
 
 var appPath = {
@@ -29,6 +30,7 @@ gulp.task('clean-script', function() {
 
 gulp.task('script', ['clean-script'], function() {
     return gulp.src(sourcePath.jsSource)
+        .pipe(concat('main.js'))
         .pipe(gulp.dest(appPath.js))
 });
 
