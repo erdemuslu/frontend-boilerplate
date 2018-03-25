@@ -7,7 +7,8 @@ var gulp = require('gulp'),
 
 var sourcePath = {
     sassSource: 'src/scss/*.scss',
-    htmlSource: 'src/*.html'
+    htmlSource: 'src/*.html',
+    jsSource: 'src/js/*.js'
 }
 
 var appPath = {
@@ -19,7 +20,17 @@ var appPath = {
 gulp.task('clean-html', function() {
     return gulp.src(appPath.root + '/*.html', {read: false, force: true})
         .pipe(clean());
-})
+});
+
+gulp.task('clean-script', function() {
+    return gulp.src(appPath.js + '/*.js', {read: false, force: true})
+        .pipe(clean());
+});
+
+gulp.task('script', ['clean-script'], function() {
+    return gulp.src(sourcePath.jsSource)
+        .pipe(gulp.dest(appPath.js))
+});
 
 gulp.task('sass', function() {
     return gulp.src(sourcePath.sassSource)
@@ -44,9 +55,10 @@ gulp.task('serve', ['sass'], function() {
     })
 });
 
-gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html'], function() {
+gulp.task('watch', ['serve', 'sass', 'copy', 'clean-html', 'script', 'clean-script'], function() {
     gulp.watch([sourcePath.sassSource], ['sass']);
     gulp.watch([sourcePath.htmlSource], ['copy']);
+    gulp.watch([sourcePath.jsSource], ['script']);
 });
 
 gulp.task('default', ['watch']);
