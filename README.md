@@ -1,2 +1,2 @@
-# workflow
-my web workflow with npm, sass, gulp and more
+# Frontend Boilerplate
+Frontend Boilerplate with sass, pug, browserify and more
