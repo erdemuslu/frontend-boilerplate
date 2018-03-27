@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
-    reload = browserSync.reload(),
     autoprefixer = require('gulp-autoprefixer'),
     browserify = require('gulp-browserify'),
     clean = require('gulp-clean'),
@@ -13,12 +12,10 @@ var gulp = require('gulp'),
     pug = require('gulp-pug');
 
 var sourcePath = {
-    sassSource: 'src/scss/*.scss',
-    htmlSource: 'src/*.html',
-    htmlPartialsSource: 'src/partial/*.html',
-    jsSource: 'src/js/**',
-    imgSource: 'src/img/**',
-    pugSource: 'src/views/*.pug'
+    sassSource: 'src/scss/**/*',
+    jsSource: 'src/js/**/*',
+    imgSource: 'src/img/**/*',
+    pugSource: 'src/view/*.pug'
 }
 
 var appPath = {
@@ -28,31 +25,25 @@ var appPath = {
     img: 'app/img'
 }
 
-gulp.task('clean-html', function() {
-    return gulp.src(appPath.root + '/*.html', {read: false, force: true})
-        .pipe(clean());
-});
-
 gulp.task('clean-script', function() {
     return gulp.src(appPath.js + '/*.js', {read: false, force: true})
         .pipe(clean());
 });
 
+gulp.task('view', function () {
+    return gulp.src(sourcePath.pugSource)
+        .pipe(pug({
+            doctype: 'html',
+            pretty: false
+        }))
+        .pipe(gulp.dest('./app/'));
+});
+
 gulp.task('script', ['clean-script'], function() {
     return gulp.src(sourcePath.jsSource)
-        .pipe(concat('main.js'))
+        .pipe(concat('app.js'))
         .pipe(browserify())        
         .pipe(gulp.dest(appPath.js))
-});
-
-gulp.task("reload-script", ["script"], () => {
-    browserSync.reload();
-});
-
-gulp.task('html', function() {
-    return gulp.src(sourcePath.htmlSource)
-        .pipe(injectPartials())
-        .pipe(gulp.dest(appPath.root))
 });
 
 gulp.task('sass', function() {
@@ -70,27 +61,28 @@ gulp.task('sass', function() {
             .pipe(gulp.dest(appPath.css));
 });
 
-gulp.task('images', function() {
+gulp.task('images', function () {
     return gulp.src(sourcePath.imgSource)
         .pipe(newer(appPath.img))
         .pipe(imagemin())
         .pipe(gulp.dest(appPath.img));
 });
 
-gulp.task('watch', ['sass', 'clean-html', 'script', 'clean-script', 'images', 'html'], function() {
-    gulp.watch([sourcePath.sassSource], ['sass']);
-    gulp.watch([sourcePath.jsSource], ['script']);
-    gulp.watch([sourcePath.jsSource], ['reload-script']);
-    gulp.watch([sourcePath.imgSource], ['images']);
-    gulp.watch([sourcePath.htmlSource, sourcePath.htmlPartialsSource], ['html']);
-});
+gulp.task('watch', function () {
+    gulp.watch(sourcePath.sassSource, ['sass']);
+    gulp.watch(['src/view/**/*', sourcePath.pugSource], ['view']);
+    gulp.watch(sourcePath.jsSource, ['script']);
+    gulp.watch(sourcePath.imgSource, ['images']);
 
-gulp.task('serve', ['watch'], function() {
-    browserSync.init([appPath.css + '/*.css', appPath.root + '/*.html', appPath.js + '/*.js'], {
-        server:{
+    // init server
+    browserSync.init({
+        server: {
+            proxy: "local.build",
             baseDir: appPath.root
         }
     });
+
+    gulp.watch([appPath.root + '**'], browserSync.reload);
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['watch']);
