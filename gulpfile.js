@@ -9,14 +9,16 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     newer = require('gulp-newer'),
     imagemin = require('gulp-imagemin'),
-    injectPartials = require('gulp-inject-partials');
+    injectPartials = require('gulp-inject-partials'),
+    pug = require('gulp-pug');
 
 var sourcePath = {
     sassSource: 'src/scss/*.scss',
     htmlSource: 'src/*.html',
     htmlPartialsSource: 'src/partial/*.html',
     jsSource: 'src/js/**',
-    imgSource: 'src/img/**'
+    imgSource: 'src/img/**',
+    pugSource: 'src/views/*.pug'
 }
 
 var appPath = {
@@ -43,9 +45,8 @@ gulp.task('script', ['clean-script'], function() {
         .pipe(gulp.dest(appPath.js))
 });
 
-gulp.task('script-watch', ['script'], function (done) {
+gulp.task("reload-script", ["script"], () => {
     browserSync.reload();
-    done();
 });
 
 gulp.task('html', function() {
@@ -76,20 +77,20 @@ gulp.task('images', function() {
         .pipe(gulp.dest(appPath.img));
 });
 
-gulp.task('serve', function() {
-    browserSync.init([appPath.css + '/*.css', appPath.root + '/*.html', appPath.js + '/*.js'], {
-        server:{
-            baseDir: appPath.root
-        }
-    })
-});
-
-gulp.task('watch', ['serve', 'sass', 'clean-html', 'script', 'script-watch', 'clean-script', 'images', 'html'], function() {
+gulp.task('watch', ['sass', 'clean-html', 'script', 'clean-script', 'images', 'html'], function() {
     gulp.watch([sourcePath.sassSource], ['sass']);
     gulp.watch([sourcePath.jsSource], ['script']);
-    gulp.watch(sourcePath.jsSource, ['script-watch']);
+    gulp.watch([sourcePath.jsSource], ['reload-script']);
     gulp.watch([sourcePath.imgSource], ['images']);
     gulp.watch([sourcePath.htmlSource, sourcePath.htmlPartialsSource], ['html']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('serve', ['watch'], function() {
+    browserSync.init([appPath.css + '/*.css', appPath.root + '/*.html', appPath.js + '/*.js'], {
+        server:{
+            baseDir: appPath.root
+        }
+    });
+});
+
+gulp.task('default', ['serve']);
