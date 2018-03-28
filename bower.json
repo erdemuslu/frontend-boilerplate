@@ -22,6 +22,7 @@
     "tests"
   ],
   "devDependencies": {
-    "normalize.css": "normalize-css#^8.0.0"
+    "normalize.css": "normalize-css#^8.0.0",
+    "bootstrap": "^4.0.0"
   }
 }

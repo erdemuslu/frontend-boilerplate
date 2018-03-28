@@ -57,6 +57,7 @@ gulp.task('script', ['clean-script'], function() {
 
 gulp.task('sass', ['clean-css'], function() {
     var normalizeCSS = gulp.src('./bower_components/normalize.css/normalize.css'),
+        bootstrapCSS = gulp.src('./bower_components/bootstrap/dist/css/bootstrap.min.css'),
         sassFiles;
 
     sassFiles = gulp.src(sourcePath.sassSource)
@@ -65,7 +66,7 @@ gulp.task('sass', ['clean-css'], function() {
             cascade: false
         }))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        return merge(normalizeCSS, sassFiles)
+        return merge(normalizeCSS, bootstrapCSS, sassFiles)
             .pipe(concat('app.css'))
             .pipe(gulp.dest(appPath.css));
 });
