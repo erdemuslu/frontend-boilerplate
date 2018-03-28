@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     newer = require('gulp-newer'),
     imagemin = require('gulp-imagemin'),
-    pug = require('gulp-pug');
+    pug = require('gulp-pug'),
+    babel = require('gulp-babel');
 
 var sourcePath = {
     sassSource: 'src/scss/**/*',
@@ -51,7 +52,10 @@ gulp.task('views', ['clean-html'], function () {
 gulp.task('script', ['clean-script'], function() {
     return gulp.src(sourcePath.jsSource)
         .pipe(concat('app.js'))
-        .pipe(browserify())        
+        .pipe(browserify())
+        .pipe(babel({
+            compact: false
+        }))
         .pipe(gulp.dest(appPath.js))
 });
 

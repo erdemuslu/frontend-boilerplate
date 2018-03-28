@@ -3,10 +3,8 @@ var $ = require('jquery'),
 
 $(document).ready(() => {
 
-    _([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 1, 2, 3, 3, 1])
-        .uniq()
-        .each(function (i) {
-            console.log(i);
-        });
- 
+    // lodash works
+    const arr = _.uniq([2, 1, 2]);
+    console.log(arr); 
+
 });
