@@ -8,14 +8,13 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     newer = require('gulp-newer'),
     imagemin = require('gulp-imagemin'),
-    injectPartials = require('gulp-inject-partials'),
     pug = require('gulp-pug');
 
 var sourcePath = {
     sassSource: 'src/scss/**/*',
     jsSource: 'src/js/**/*',
     imgSource: 'src/img/**/*',
-    pugSource: 'src/view/*.pug'
+    pugSource: 'src/views/*.pug'
 }
 
 var appPath = {
@@ -30,7 +29,17 @@ gulp.task('clean-script', function() {
         .pipe(clean());
 });
 
-gulp.task('view', function () {
+gulp.task('clean-html', function() {
+    return gulp.src(appPath.root + '/*.html', {read: false, force: true})
+        .pipe(clean());
+});
+
+gulp.task('clean-css', function() {
+    return gulp.src(appPath.css + '/*.css', {read: false, force: true})
+        .pipe(clean());
+});
+
+gulp.task('views', ['clean-html'], function () {
     return gulp.src(sourcePath.pugSource)
         .pipe(pug({
             doctype: 'html',
@@ -46,7 +55,7 @@ gulp.task('script', ['clean-script'], function() {
         .pipe(gulp.dest(appPath.js))
 });
 
-gulp.task('sass', function() {
+gulp.task('sass', ['clean-css'], function() {
     var bootstrapCSS = gulp.src('./node_modules/bootstrap/dist/css/bootstrap.css'),
         sassFiles;
 
@@ -68,9 +77,11 @@ gulp.task('images', function () {
         .pipe(gulp.dest(appPath.img));
 });
 
+gulp.task('setup', ['sass', 'images', 'views', 'script']);
+
 gulp.task('watch', function () {
     gulp.watch(sourcePath.sassSource, ['sass']);
-    gulp.watch(['src/view/**/*', sourcePath.pugSource], ['view']);
+    gulp.watch(['src/views/**/*', sourcePath.pugSource], ['views']);
     gulp.watch(sourcePath.jsSource, ['script']);
     gulp.watch(sourcePath.imgSource, ['images']);
 
