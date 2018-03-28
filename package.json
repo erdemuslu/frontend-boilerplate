@@ -1,14 +1,14 @@
 {
-  "name": "workflow",
+  "name": "frontend-boilerplate",
   "version": "1.0.0",
-  "description": "my web workflow with npm, sass, gulp and more",
+  "description": "Frontend Boilerplate with sass, pug, browserify and more",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/erdemuslu/workflow.git"
+    "url": "git+https://github.com/erdemuslu/frontend-boilerplate.git"
   },
   "keywords": [
     "sass",
@@ -19,9 +19,9 @@
   "author": "Erdem Uslu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/erdemuslu/workflow/issues"
+    "url": "https://github.com/erdemuslu/frontend-boilerplate/issues"
   },
-  "homepage": "https://github.com/erdemuslu/workflow#readme",
+  "homepage": "https://github.com/erdemuslu/frontend-boilerplate#readme",
   "devDependencies": {
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",

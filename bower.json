@@ -1,0 +1,27 @@
+{
+  "name": "frontend-boilerplate",
+  "description": "Frontend Boilerplate with sass, pug, browserify and more",
+  "main": "index.js",
+  "authors": [
+    "Erdem Uslu"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "sass",
+    "npm",
+    "git",
+    "gulp"
+  ],
+  "homepage": "https://github.com/erdemuslu/frontend-boilerplate",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "normalize.css": "normalize-css#^8.0.0"
+  }
+}
