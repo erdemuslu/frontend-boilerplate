@@ -8,9 +8,12 @@ a usefull boilerplate for your projects
 * es6
 
 ## Setup
+
 ```
 $ npm install
+
 ```
 $ bower install
+
 ```
 $ gulp setup
