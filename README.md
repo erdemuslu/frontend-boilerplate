@@ -11,9 +11,5 @@ a usefull boilerplate for your projects
 
 ```
 $ npm install
-
-```
 $ bower install
-
-```
 $ gulp setup
