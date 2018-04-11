@@ -15,7 +15,7 @@ $ bower install
 $ gulp setup
 ```
 
-## Lunch
+## Launch
 
 ```
 $ gulp
