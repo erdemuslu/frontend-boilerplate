@@ -15,6 +15,10 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     connect = require('gulp-connect');
 
+var sourceFiles = [
+    './manifest.webmanifest'
+];
+
 var sourcePath = {
     sassSource: 'src/scss/**/*',
     jsSource: 'src/js/**/*',
@@ -41,6 +45,11 @@ gulp.task('clean-html', function() {
 
 gulp.task('clean-css', function() {
     return gulp.src(appPath.css + '/*.css', {read: false, force: true})
+        .pipe(clean());
+});
+
+gulp.task('clean-move', function() {
+    return gulp.src(sourceFiles, {read: false, force: true})
         .pipe(clean());
 });
 
@@ -92,7 +101,12 @@ gulp.task('images', function () {
         .pipe(gulp.dest(appPath.img));
 });
 
-gulp.task('setup', ['sass', 'images', 'views', 'script']);
+gulp.task('move', function () {
+    gulp.src(sourceFiles, {base: './'})
+    .pipe(gulp.dest(appPath.root));
+});
+
+gulp.task('setup', ['sass', 'images', 'views', 'script', 'move', 'clean-move']);
 
 gulp.task('watch', function () {
     gulp.watch(sourcePath.sassSource, ['sass']);
