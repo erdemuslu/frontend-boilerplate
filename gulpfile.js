@@ -16,7 +16,8 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');
 
 var sourceFiles = [
-    './manifest.webmanifest'
+    './manifest.webmanifest',
+    './favicon.ico'
 ];
 
 var sourcePath = {
