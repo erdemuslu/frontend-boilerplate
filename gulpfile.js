@@ -15,23 +15,20 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     connect = require('gulp-connect');
 
-var sourceFiles = [
-    './manifest.webmanifest',
-    './favicon.ico'
-];
-
 var sourcePath = {
     sassSource: 'src/scss/**/*',
     jsSource: 'src/js/**/*',
     imgSource: 'src/img/**/*',
-    pugSource: 'src/views/*.pug'
+    pugSource: 'src/views/*.pug',
+    attachmentsSource: 'src/attachments/**/*'
 }
 
 var appPath = {
     root: 'app/',
     css: 'app/css',
     js: 'app/js',
-    img: 'app/img'
+    img: 'app/img',
+    attachmentsSource: 'app/'
 }
 
 gulp.task('clean-script', function() {
@@ -46,11 +43,6 @@ gulp.task('clean-html', function() {
 
 gulp.task('clean-css', function() {
     return gulp.src(appPath.css + '/*.css', {read: false, force: true})
-        .pipe(clean());
-});
-
-gulp.task('clean-move', function() {
-    return gulp.src(sourceFiles, {read: false, force: true})
         .pipe(clean());
 });
 
@@ -103,11 +95,11 @@ gulp.task('images', function () {
 });
 
 gulp.task('move', function () {
-    gulp.src(sourceFiles, {base: './'})
-    .pipe(gulp.dest(appPath.root));
+    return gulp.src(sourcePath.attachmentsSource)
+        .pipe(gulp.dest(appPath.attachmentsSource));
 });
 
-gulp.task('setup', ['sass', 'images', 'views', 'script', 'move', 'clean-move']);
+gulp.task('setup', ['sass', 'images', 'views', 'script', 'move']);
 
 gulp.task('watch', function () {
     gulp.watch(sourcePath.sassSource, ['sass']);
