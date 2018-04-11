@@ -2,14 +2,22 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer'),
-    browserify = require('gulp-browserify'),
+    //browserify = require('gulp-browserify'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     merge = require('merge-stream'),
     newer = require('gulp-newer'),
     imagemin = require('gulp-imagemin'),
     pug = require('gulp-pug'),
-    babel = require('gulp-babel');
+    //babel = require('gulp-babel'),
+    babelify = require('babelify'),
+    browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+    sourcemaps = require('gulp-sourcemaps'),
+    connect = require('gulp-connect'),
+    gutil = require('gulp-util'),
+    uglify = require('gulp-uglify');
 
 var sourcePath = {
     sassSource: 'src/scss/**/*',
@@ -49,14 +57,20 @@ gulp.task('views', ['clean-html'], function () {
         .pipe(gulp.dest('./app/'));
 });
 
-gulp.task('script', ['clean-script'], function() {
-    return gulp.src(sourcePath.jsSource)
-        .pipe(concat('app.js'))
-        .pipe(browserify())
-        .pipe(babel({
-            compact: false
-        }))
-        .pipe(gulp.dest(appPath.js))
+gulp.task('script', function(){
+    return browserify({
+        entries: ['./src/js/script.js']
+    })
+    .transform(babelify.configure({
+        presets: ["es2015"]
+    }))
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest(appPath.js))
+    .pipe(connect.reload());
 });
 
 gulp.task('sass', ['clean-css'], function() {

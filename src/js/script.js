@@ -1,10 +1,10 @@
-var $ = require('jquery'),
-    _ = require('lodash');
+import $ from "jquery";
+import { uniq } from "lodash";
 
 $(document).ready(() => {
 
     // lodash works
-    const arr = _.uniq([2, 1, 2]);
+    const arr = uniq([2, 1, 2]);
     console.log(arr); 
-
+    
 });
