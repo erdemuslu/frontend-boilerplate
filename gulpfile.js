@@ -71,20 +71,27 @@ gulp.task('script', function(){
     .pipe(connect.reload());
 });
 
-gulp.task('sass', ['clean-css'], function() {
-    var normalizeCSS = gulp.src('./bower_components/normalize.css/normalize.css'),
-        bootstrapCSS = gulp.src('./bower_components/bootstrap/dist/css/bootstrap.min.css'),
-        sassFiles;
+gulp.task('sass', function () {
 
-    sassFiles = gulp.src(sourcePath.sassSource)
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
-        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        return merge(normalizeCSS, bootstrapCSS, sassFiles)
-            .pipe(concat('app.css'))
-            .pipe(gulp.dest(appPath.css));
+    var cssStream = gulp.src(
+        ['./node_modules/slick-carousel/slick/slick.css',
+        './bower_components/normalize.css/normalize.css',
+        './bower_components/bootstrap/dist/css/bootstrap.min.css',
+        './bower_components/Ionicons/css/ionicons.min.css',])
+        .pipe(concat('css-files.css'));
+
+    var scssStream = gulp.src([sourcePath.sassSource])
+        .pipe(sass())
+        .pipe(concat('scss-files.scss'));
+
+
+    var mergedStream = merge(cssStream, scssStream)
+        .pipe(concat('style.css'))
+        .pipe(minify())
+        .pipe(gulp.dest(appPath.css));
+
+    return mergedStream;
+
 });
 
 gulp.task('images', function () {
