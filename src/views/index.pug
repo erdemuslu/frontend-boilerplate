@@ -1,10 +1,9 @@
 extends layouts/default
 
-block content
+block classBlock
+	- bodyClasses.push('home')
+	- breadcrumb = 'Home'
+	- pageId = 'home'
 
-    .wrap
-        h1 Frontend Boilerplate with sass, pug, browserify and more
-        .logos
-            img(src="img/gulp-logo.svg")
-            img(src="img/browserify-logo.png")
-            img(src="img/sass-logo.png")
+block content
+    | homepage

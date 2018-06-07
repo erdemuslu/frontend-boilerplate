@@ -9,7 +9,12 @@ html(lang="en")
         link(rel="manifest", href="/manifest.webmanifest")
         link(rel="stylesheet", type="text/css", href="css/style.css")
 
-    body
+    - var breadcrumb = '';
+    - var bodyClasses = [];
+    - var pageId;
+    block classBlock
+
+    body(class=bodyClasses, id=pageId)
 
         include ../partials/header
 

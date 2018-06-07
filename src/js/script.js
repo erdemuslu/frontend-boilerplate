@@ -1,8 +1,15 @@
-import $ from "jquery";
-import { uniq } from "lodash";
+'use strict';
 
-$(document).ready(() => {
+const _ = require("lodash");
+const main = require("./helper/main");
 
-    
-    
-});
+window.onload = function() {
+
+	const pageName = document.querySelector('body').getAttribute('id');
+
+	const modulesList = {
+		"home": require('./helper/home')
+	};
+
+	modulesList[pageName].init();
+};
