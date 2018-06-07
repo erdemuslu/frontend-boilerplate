@@ -88,6 +88,10 @@ gulp.task('sass', function () {
 
     var mergedStream = merge(cssStream, scssStream)
         .pipe(concat('style.css'))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(minify())
         .pipe(gulp.dest(appPath.css));
 
