@@ -6,6 +6,7 @@ a usefull boilerplate for your projects
 * pug
 * browserify
 * es6
+* axios
 
 ## Setup
 
