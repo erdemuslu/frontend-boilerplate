@@ -1,7 +1,6 @@
 'use strict';
 
 const _ = require("lodash");
-const main = require("./helper/main");
 
 window.onload = function() {
 

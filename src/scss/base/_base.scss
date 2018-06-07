@@ -7,33 +7,3 @@ html, body {
     font-family: sans-serif;
     background-color: #eef4d4;
 }
-
-.wrap {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-}
-
-h1,h2,h3 {
-    text-align: center;
-}
-
-h1 {
-    font-size: 48px;
-    font-weight: 500;
-}
-
-.logos {
-    text-align: center;
-    margin-top: 32px;
-    margin-bottom: 32px;
-    img {
-        width: auto;
-        height: 160px;
-        margin-left: 32px;
-        margin-right: 32px;
-    }
-}
