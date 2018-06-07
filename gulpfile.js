@@ -61,7 +61,7 @@ gulp.task('script', function(){
         entries: ['./src/js/script.js']
     })
     .transform(babelify.configure({
-        presets: ["es2015"]
+        presets: ["env"]
     }))
     .bundle()
     .pipe(source('bundle.js'))
