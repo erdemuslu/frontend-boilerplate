@@ -1,6 +1,7 @@
 'use strict';
 
 const _ = require("lodash");
+const axios = require("axios");
 
 window.onload = function() {
 
