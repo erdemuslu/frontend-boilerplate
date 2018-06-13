@@ -24,7 +24,7 @@
   "rules": {
     "no-console": "off",
     "indent": [
-      4
+      0
     ],
     "linebreak-style": [
       "error",

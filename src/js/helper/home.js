@@ -1,6 +1,6 @@
 class Home {
     constructor(pagename) {
-        this.pagename = "homepage";
+        this.pagename = pagename;
     }
 
     printName() {
@@ -10,8 +10,8 @@ class Home {
     init() {
         this.printName();
     }
-};
+}
 
-const home = new Home();
+const home = new Home("homepage");
 
 module.exports = home;
