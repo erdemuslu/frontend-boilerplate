@@ -4,7 +4,7 @@ class Home {
     }
 
     printName() {
-        console.log(`This is ${this.pagename}`);
+		console.log(`This is ${this.pagename}`);
     }
 
     init() {

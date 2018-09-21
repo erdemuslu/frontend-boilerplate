@@ -1,8 +1,5 @@
 "use strict";
 
-// const _ = require("lodash");
-// const axios = require("axios");
-
 window.onload = function() {
 
 	const pageName = document.querySelector("body").getAttribute("id");
@@ -11,5 +8,5 @@ window.onload = function() {
 		"home": require("./helper/home")
 	};
 
-	modulesList[pageName].init();
+  modulesList[pageName].init();
 };
