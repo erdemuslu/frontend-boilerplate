@@ -1,17 +1,17 @@
 class Home {
-    constructor(pagename) {
-        this.pagename = pagename;
-    }
+  constructor(pagename) {
+    this.pagename = pagename;
+  }
 
-    printName() {
-		console.log(`This is ${this.pagename}`);
-    }
+  printName() {
+    console.log(`This is ${this.pagename}`);
+  }
 
-    init() {
-        this.printName();
-    }
+  init() {
+    this.printName();
+  }
 }
 
-const home = new Home("homepage");
+const home = new Home('homepage');
 
 module.exports = home;
