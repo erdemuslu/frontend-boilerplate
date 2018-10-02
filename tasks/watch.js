@@ -1,12 +1,12 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
 
-gulp.task('watch', () => {
-  gulp.watch('src/scss/**/*', gulp.series('sass'));
-  gulp.watch('src/js/**/*', gulp.series('script'));
-  gulp.watch(['src/views/**/*', 'src/views/*.pug'], gulp.series('views'));
-  gulp.watch('src/assets/**/*', gulp.series('transport'));
+function reload(done) {
+  browserSync.reload();
+  done();
+}
 
+gulp.task('watch', () => {
   // init server
   browserSync.init({
     server: {
@@ -15,5 +15,8 @@ gulp.task('watch', () => {
     },
   });
 
-  gulp.watch(['build/**'], browserSync.reload);
+  gulp.watch('src/scss/**/*', gulp.series('sass', reload));
+  gulp.watch('src/js/**/*', gulp.series('script', reload));
+  gulp.watch(['src/views/**/*'], gulp.series('views', reload));
+  gulp.watch('src/assets/**/*', gulp.series('transport', reload));
 });

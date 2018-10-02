@@ -10,6 +10,6 @@ gulp.task('setup', gulp.series('sass', 'script', 'views', 'transport', (done) =>
   done();
 }));
 
-gulp.task('default', gulp.series('sass', (done) => {
+gulp.task('default', gulp.series('watch', (done) => {
   done();
 }));

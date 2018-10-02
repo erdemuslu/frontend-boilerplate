@@ -20,11 +20,10 @@ function () {
     key: "printName",
     value: function printName() {
       console.log("This is ".concat(this.pagename));
-      console.log('erdem');
     }
   }, {
-    key: "init",
-    value: function init() {
+    key: "render",
+    value: function render() {
       this.printName();
     }
   }]);
@@ -41,11 +40,11 @@ module.exports = home;
 window.addEventListener('load', function () {
   var pageName = document.querySelector('body').getAttribute('id');
   var modulesList = {
-    home: require('./helper/home')
+    home: require('./pages/home')
   };
-  modulesList[pageName].init();
+  modulesList[pageName].render();
 });
 
-},{"./helper/home":1}]},{},[2]);
+},{"./pages/home":1}]},{},[2]);
 
 //# sourceMappingURL=bundle.js.map

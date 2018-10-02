@@ -5,10 +5,9 @@ class Home {
 
   printName() {
     console.log(`This is ${this.pagename}`);
-    console.log('erdem');
   }
 
-  init() {
+  render() {
     this.printName();
   }
 }

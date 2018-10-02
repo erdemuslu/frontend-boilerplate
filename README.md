@@ -6,18 +6,27 @@ a usefull boilerplate for your projects
 * pug
 * browserify
 * es6
-* axios
 
 ## Setup
 
 ```
-$ npm install
-$ bower install
-$ gulp setup
+$ yarn setup
 ```
 
 ## Launch
 
 ```
-$ gulp
+$ yarn start
+```
+
+## Clean
+
+```
+$ yarn clean
+```
+
+## Clean & Build
+
+```
+$ yarn build
 ```

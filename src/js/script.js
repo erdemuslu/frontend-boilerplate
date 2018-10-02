@@ -2,8 +2,8 @@ window.addEventListener('load', () => {
   const pageName = document.querySelector('body').getAttribute('id');
 
   const modulesList = {
-    home: require('./helper/home'),
+    home: require('./pages/home'),
   };
 
-  modulesList[pageName].init();
+  modulesList[pageName].render();
 });
