@@ -4,7 +4,7 @@
   "description": "Frontend Boilerplate with sass, pug, browserify and more",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf bower_components && rm -rf node_modules && build",
+    "clean": "rm -rf bower_components && rm -rf node_modules && rm -rf build",
     "setup": "yarn install && bower install && gulp setup",
     "start": "gulp",
     "build": "rm -rf build && gulp setup"
