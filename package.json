@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf bower_components && rm -rf node_modules && rm -rf build",
-    "setup": "yarn install && bower install && gulp setup",
+    "setup": "npm install && bower install && gulp setup",
     "start": "gulp",
     "build": "rm -rf build && gulp setup"
   },
@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.1.0",
     "autoprefixer": "^9.1.5",
     "babelify": "^10.0.0",
-    "browser-sync": "^2.24.7",
+    "browser-sync": "^2.26.0",
     "browserify": "^16.2.3",
     "cssnano": "^4.1.4",
     "gulp": "gulpjs/gulp.git#4.0",

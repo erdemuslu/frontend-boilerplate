@@ -10,23 +10,23 @@ a usefull boilerplate for your projects
 ## Setup
 
 ```
-$ yarn setup
+$ npm run setup
 ```
 
 ## Launch
 
 ```
-$ yarn start
+$ npm start
 ```
 
 ## Clean
 
 ```
-$ yarn clean
+$ npm run clean
 ```
 
 ## Clean & Build
 
 ```
-$ yarn build
+$ npm run build
 ```
