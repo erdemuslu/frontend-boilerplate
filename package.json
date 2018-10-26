@@ -34,7 +34,7 @@
     "browser-sync": "^2.26.0",
     "browserify": "^16.2.3",
     "cssnano": "^4.1.4",
-    "gulp": "gulpjs/gulp.git#4.0",
+    "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.6.1",
