@@ -1,13 +1,13 @@
 {
   "name": "frontend-boilerplate",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Frontend Boilerplate with sass, pug, browserify and more",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf bower_components && rm -rf node_modules && rm -rf build",
-    "setup": "npm install && bower install && gulp setup",
-    "start": "gulp",
-    "build": "rm -rf build && gulp setup"
+    "clean": "gulp clean",
+    "setup": "npm install && gulp build",
+    "start": "gulp watch",
+    "build": "gulp build",
   },
   "repository": {
     "type": "git",
@@ -25,16 +25,17 @@
     "url": "https://github.com/erdemuslu/frontend-boilerplate/issues"
   },
   "homepage": "https://github.com/erdemuslu/frontend-boilerplate#readme",
-  "devDependencies": {},
   "dependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
     "autoprefixer": "^9.1.5",
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.0",
     "browserify": "^16.2.3",
     "cssnano": "^4.1.4",
+    "del": "^3.0.0",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.6.1",
@@ -43,9 +44,15 @@
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
     "merge-stream": "^1.0.1",
     "uglify-js": "^3.4.9",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }

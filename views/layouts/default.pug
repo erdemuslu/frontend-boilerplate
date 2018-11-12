@@ -5,9 +5,9 @@ html(lang="en")
     meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     meta(name="keywords", content="a usefull boilerplate for your projects")
-    link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico')
-    link(rel="manifest", href="/manifest.webmanifest")
-    link(rel="stylesheet", type="text/css", href="style/bundle.css")
+    link(rel='shortcut icon', type='image/x-icon', href='./assets/favicon.ico')
+    link(rel="manifest", href="./assets/manifest.webmanifest")
+    link(rel="stylesheet", href="./style/index.css")
 
   - var breadcrumb = '';
   - var bodyClasses = [];
@@ -22,4 +22,4 @@ html(lang="en")
 
     include ../partials/footer
     block bottom
-    script(type="text/javascript", src="/script/bundle-min.js")
+    script(type="text/javascript", src="./script/index.js")
