@@ -7,7 +7,7 @@
     "clean": "gulp clean",
     "setup": "npm install && gulp build",
     "start": "gulp watch",
-    "build": "gulp build",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
