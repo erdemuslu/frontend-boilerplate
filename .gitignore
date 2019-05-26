@@ -62,3 +62,7 @@ typings/
 
 # build folder
 build/
+
+# osx
+.DS_Store
+**/.DS_Store
