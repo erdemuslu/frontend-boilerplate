@@ -7,7 +7,7 @@ const paths = {
     dest: 'build/assets/',
   },
   style: {
-    src: 'src/style/index.scss',
+    src: 'src/style/index.sass',
     watch: 'src/style/**/*',
     dest: 'build/style',
   },

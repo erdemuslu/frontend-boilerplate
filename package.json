@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "clean": "gulp clean",
-    "setup": "npm install && gulp build",
-    "start": "gulp watch",
-    "build": "gulp build"
+    "setup": "npm install && npm run build:dev",
+    "start": "NODE_ENV=development gulp watch",
+    "build:dev": "NODE_ENV=development gulp clean && gulp build",
+    "build": "NODE_ENV=production gulp clean && gulp build"
   },
   "repository": {
     "type": "git",
@@ -32,14 +33,15 @@
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.0",
     "browserify": "^16.2.3",
-    "cssnano": "^4.1.4",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.6.1",
     "gulp-minify": "^3.1.0",
+    "gulp-mode": "^1.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-sass": "^4.0.1",
