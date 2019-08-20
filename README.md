@@ -25,7 +25,13 @@ $ npm start
 $ npm run clean
 ```
 
-## Clean & Build
+## Build For Development
+
+```
+$ npm run build:dev
+```
+
+## Build For Production
 
 ```
 $ npm run build
