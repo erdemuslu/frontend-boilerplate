@@ -1,4 +1,3 @@
-// define paths
 const paths = {
   base: {
     src: '**/*',

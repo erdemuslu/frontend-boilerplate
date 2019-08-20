@@ -1,4 +1,3 @@
-// import packages
 const gulp = require('gulp');
 
 // import paths
