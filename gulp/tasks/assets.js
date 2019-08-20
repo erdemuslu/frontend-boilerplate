@@ -2,11 +2,11 @@
 const gulp = require('gulp');
 
 // import paths
-const paths = require('../config/paths');
+const { assets: { src, dest } } = require('../config');
 
 const assets = () => (
-  gulp.src(paths.assets.src)
-    .pipe(gulp.dest(paths.assets.dest))
+  gulp.src(src)
+    .pipe(gulp.dest(dest))
 );
 
 module.exports = assets;

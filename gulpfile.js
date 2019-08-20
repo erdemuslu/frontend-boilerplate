@@ -10,7 +10,7 @@ const assets = require('./gulp/tasks/assets');
 const clean = require('./gulp/tasks/clean');
 
 // import paths
-const paths = require('./gulp/config/paths');
+const paths = require('./gulp/config');
 
 // define tasks
 exports.style = style;

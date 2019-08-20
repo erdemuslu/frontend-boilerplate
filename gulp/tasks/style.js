@@ -8,16 +8,19 @@ const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 
 // import paths
-const paths = require('../config/paths');
+const { style: { src, dest } } = require('../config');
 
 const style = () => (
-  gulp.src(paths.style.src)
+  gulp.src(src)
     .pipe(sourcemaps.init())
     .pipe(sass())
     .on('error', sass.logError)
-    .pipe(postcss([autoprefixer({ browsers: ['last 1 version'] }), cssnano()]))
+    .pipe(postcss([
+      autoprefixer({ Browserslist: ['last 2 versions', 'ie >= 9'] }),
+      cssnano(),
+    ]))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.style.dest))
+    .pipe(gulp.dest(dest))
     .pipe(browserSync.stream())
 );
 

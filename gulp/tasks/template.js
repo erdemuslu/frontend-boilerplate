@@ -3,12 +3,12 @@ const gulp = require('gulp');
 const pug = require('gulp-pug');
 
 // import paths
-const paths = require('../config/paths');
+const { template: { src, dest } } = require('../config');
 
 const template = () => (
-  gulp.src(paths.template.src)
+  gulp.src(src)
     .pipe(pug())
-    .pipe(gulp.dest(paths.template.dest))
+    .pipe(gulp.dest(dest))
 );
 
 module.exports = template;

@@ -8,11 +8,11 @@ const sourcemaps = require('gulp-sourcemaps');
 const minify = require('gulp-minify');
 
 // import paths
-const paths = require('../config/paths');
+const { script: { src, dest } } = require('../config');
 
 const script = () => (
   browserify({
-    entries: [paths.script.src],
+    entries: [src],
   })
     .transform(babelify.configure({
       presets: ['@babel/preset-env'],
@@ -25,7 +25,7 @@ const script = () => (
     }))
     .pipe(sourcemaps.write('./'))
     .pipe(minify())
-    .pipe(gulp.dest(paths.script.dest))
+    .pipe(gulp.dest(dest))
 );
 
 module.exports = script;
