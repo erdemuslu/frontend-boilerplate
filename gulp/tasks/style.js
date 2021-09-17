@@ -1,11 +1,14 @@
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const gulpSass = require('gulp-sass');
+const nodeSass = require('node-sass');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const mode = require('gulp-mode')();
 const browserSync = require('browser-sync').create();
+
+const sass = gulpSass(nodeSass);
 
 // import paths
 const { style: { src, dest } } = require('../config');

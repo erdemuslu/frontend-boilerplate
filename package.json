@@ -48,6 +48,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "merge-stream": "^1.0.1",
+    "node-sass": "^6.0.1",
     "uglify-js": "^3.4.9",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
